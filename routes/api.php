@@ -2,30 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AuthController;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
 
-Route::get('/doctores', function () {
-    return 'Lista de doctores';
-});
-
-Route::get('/doctores/{id}', function () {
-    return 'Obteniendo un doctor';
-});
-
-
-Route::post('/doctores', function () {
-    return 'Creando doctores';
-});
-
-Route::put('/doctores/{id}', function () {
-    return 'Actualizando doctores';
-});
-
-
-Route::delete('/doctores/{id}', function () {
-    return 'Eliminando doctores';
+Route::middleware('auth:api')->group(function () {
+    Route::get('doctors', [DoctorController::class, 'index']);
+    Route::post('doctors', [DoctorController::class, 'store']);
+    Route::get('doctors/{doctor}', [DoctorController::class, 'show']);
+    Route::put('doctors/{doctor}', [DoctorController::class, 'update']);
+    Route::delete('doctors/{doctor}', [DoctorController::class, 'destroy']);
 });
 
