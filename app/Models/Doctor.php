@@ -2,19 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Doctor extends Authenticatable
+class Doctor extends Model
 {
-    use HasFactory;
-
+    protected $table = 'doctores';
+    
     protected $fillable = [
-        'first_name', 'last_name', 'age', 'specialty_id', 'email', 'password'
-    ];
-
-    protected $hidden = [
-        'password', 'remember_token',
+        'first_name', 'last_name', 'age', 'especialidad_id', 'email', 'password'
     ];
 
     public function especialidad()

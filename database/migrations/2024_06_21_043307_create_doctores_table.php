@@ -16,13 +16,16 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->integer('age');
-            $table->unsignedBigInteger('specialty_id');
+            $table->unsignedBigInteger('especialidad_id');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
-
-            $table->foreign('specialty_id')->references('id')->on('specialties');
+        
+            // Definir la clave foránea
+            $table->foreign('especialidad_id')->references('id')->on('especialidades');
         });
+        
+        
     }
 
     /**

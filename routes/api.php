@@ -2,17 +2,26 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
+
 use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EspecialidadController;
 
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+//API DE DOCTORES//
 
-Route::middleware('auth:api')->group(function () {
-    Route::get('doctors', [DoctorController::class, 'index']);
-    Route::post('doctors', [DoctorController::class, 'store']);
-    Route::get('doctors/{doctor}', [DoctorController::class, 'show']);
-    Route::put('doctors/{doctor}', [DoctorController::class, 'update']);
-    Route::delete('doctors/{doctor}', [DoctorController::class, 'destroy']);
-});
+Route::get('/doctores', [DoctorController::class, 'index']);
+Route::get('/doctores/{id}', [DoctorController::class, 'show']);
+Route::post('/doctores', [DoctorController::class, 'store']);
+Route::put('/doctores/{id}', [DoctorController:: class, 'update']);
+Route::delete('/doctores/{id}', [DoctorController:: class, 'destroy']);
 
+// API DE ESPECIALIDADES // 
+
+Route::get('/especialidades', [EspecialidadController::class, 'index']);
+Route::get('/especialidades/{id}', [EspecialidadController::class, 'show']);
+Route::post('/especialidades', [EspecialidadController::class, 'store']);
+Route::put('/especialidades/{id}', [EspecialidadController:: class, 'update']);
+Route::delete('/especialidades/{id}', [EspecialidadController:: class, 'destroy']);
