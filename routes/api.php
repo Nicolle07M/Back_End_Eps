@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 // Rutas de autenticación
 Route::post('/login', [AuthController::class, 'login']);
@@ -29,3 +30,19 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/especialidades', [EspecialidadController::class, 'index']);
 Route::post('/doctores', [DoctorController::class, 'store']);
 
+
+
+// API de Doctores
+Route::get('/doctores', [DoctorController::class, 'index']);
+Route::post('/doctores', [DoctorController::class, 'store']);
+Route::get('/doctores/{id}', [DoctorController::class, 'show']);
+Route::put('/doctores/{id}', [DoctorController::class, 'update']);
+Route::delete('/doctores/{id}', [DoctorController::class, 'destroy']);
+
+// API de User 
+
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+Route::put('/users/{id}', [UserController::class, 'update']);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
