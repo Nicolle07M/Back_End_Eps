@@ -27,9 +27,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/especialidades/{id}', [EspecialidadController::class, 'update']);
     Route::delete('/especialidades/{id}', [EspecialidadController::class, 'destroy']);
 });
-Route::get('/especialidades', [EspecialidadController::class, 'index']);
-Route::post('/doctores', [DoctorController::class, 'store']);
 
+Route::post('/doctores', [DoctorController::class, 'store']);
+Route::get('/especialidades', [EspecialidadController::class, 'index']);
 
 
 // API de Doctores
